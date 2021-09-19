@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+
+    
+      
+
+   
+
+
+    
+
+
+    <div id="login_box">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          
+        
+       
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password">
+    
+       
+        <button onclick="login()">Login</button>
+        <button onclick="signup()">Signup</button>
+    </div>
+
+    
+    <div id="welcome_box">
+        Welcome User: <span id="user"></span>
+        <div>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+
+       
+
+        <div id="congrats"><span class="yellow">Wow!</span>  yellow balloons are popped! <a href="./level2.html"> <input type="button" class="btn"> LEVEL 2 </a>
+        
+        </div>
+        <h3>level 1</h3>
+        <p>popped 3 yellow ballons</p>
+        <div id="balloon">
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: red;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: lightblue;"></div>
+            <div class="wrong" style="background-color: red;"></div>
+        </div>
+        <div id="balloon">
+            <div class="wrong" style="background-color: lightblue;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: red;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: lightblue;"></div>
+        </div>
+        
+        <div id="balloon">
+            <div class="wrong" style="background-color: red;"></div>
+            <div class="wrong" style="background-color: red;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: lightblue;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+        </div>
+        <div id="balloon">
+            <div class="wrong" style="background-color: red;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: lightblue;"></div>
+            <div class="lv1" id="lv1" style="background-color: yellow;"></div>
+            <div class="wrong" style="background-color: lightblue;"></div>
+        </div>
+        
+    </div>
+
+
+
+
+    <script type="module">
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyADW35Zy2u2Dgfq6HcdvvLTJPmdfAu8gy4",
+  authDomain: "shah-e8364.firebaseapp.com",
+  databaseURL: "https://shah-e8364-default-rtdb.firebaseio.com",
+  projectId: "shah-e8364",
+  storageBucket: "shah-e8364.appspot.com",
+  messagingSenderId: "518412424458",
+  appId: "1:518412424458:web:d6b927c2998f8b60fe56f3",
+  measurementId: "G-2GPS2DK35L"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user);
+                document.getElementById("user").innerHTML = user.email;
+                document.getElementById("login_box").style.display = "none";
+                document.getElementById("welcome_box").style.display = "block";
+            } else {
+                document.getElementById("login_box").style.display = "block";
+                document.getElementById("welcome_box").style.display = "none";
+            }
+        });
+    </script>
+    <script src="./app.js"></script>
+</body>
+
+</html>

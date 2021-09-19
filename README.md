@@ -1,1 +1,1 @@
-# hack
+# hackathon with firebase authentication
